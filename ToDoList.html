@@ -1,9 +1,31 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html data-ng-app="toDoApp">
 <head>
-    <title></title>
+    <title>To Do List</title>
+    <link href="ToDoList.min.css" rel="stylesheet" />
 </head>
 <body>
 
+    <h1>My To Do List</h1>
+
+    <div data-ng-controller="ToDoController">
+
+        <span>{{remaining()}} of {{toDos.length}} remaining</span> [<a href="#" data-ng-click="archive()">archive</a>]
+        
+        <ul>
+            <li data-ng-repeat="toDo in toDos">
+                <input type="checkbox" data-ng-model="toDo.done" />
+                <span class="done-{{toDo.done}}">{{toDo.text}}</span>
+            </li>
+        </ul>
+
+        <input type="text" data-ng-model="toDo.text" />
+        <input type="button" value="Add" data-ng-click="addToDo()" />
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular-route.min.js"></script>
+
+    <script src="ToDoList.js"></script>
 </body>
 </html>
