@@ -18,9 +18,14 @@
         $scope.toDo.text = "";
     };
 
-    //CONTINUE FROM HERE!!!
     $scope.archive = function() {
-
+    	var oldToDos = $scope.toDos;
+    	$scope.toDos = [];
+		angular.forEach(oldToDos, function(toDo){
+			if(!toDo.done){
+				$scope.toDos.push(toDo);
+			}
+		})
     }
 
 });
